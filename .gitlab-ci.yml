@@ -5,10 +5,11 @@ stages:
 #  - deploy
 
 variables:
-  CONTAINER_IMAGE: $CI_REGISTRY_IMAGE:$CI_BUILD_REF_NAME
+  #CONTAINER_IMAGE: $CI_REGISTRY_IMAGE:$CI_BUILD_REF_NAME
+  CONTAINER_IMAGE: codenetix/laravel-dms-proxy:$CI_BUILD_REF_NAME
 
 before_script:
-  - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
+  - docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_PASSWORD
 
 build:
   stage: build
